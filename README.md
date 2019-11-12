@@ -8,3 +8,8 @@
   Run: <b>gcc -o mine mine.c -lncurses</b><br>
   Followed by: <b>./mine [custom row#] [custom col#] [custom mine#]</b>
 </p>
+
+<h3>Screenshot</h3>
+<p>
+  <img src='screenshot.png'></img>
+</p>
