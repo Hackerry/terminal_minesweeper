@@ -11,5 +11,5 @@
 
 <h3>Screenshot</h3>
 <p>
-  <img src='screenshot.png'></img>
+  <img src='screenshot.png' width='400px'></img>
 </p>
