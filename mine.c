@@ -44,7 +44,7 @@ static unsigned int tempSize;
 static char* info;
 static char* infoFormat = "Remain: %d"; //Cheat here -> Correct: %d";
 static char* control = "MOVE: [AWDS or arrows] PROBE: [SPACE] FLAG: F REDRAW: R";
-static int REMAIN_N = 0, CORRECT_N = 0;
+static int REMAIN_N = 0, CORRECT_N = 0, GAME_END_PRESS = 0;
 static bool GAME_END = false, COL_SUPP = false;
 
 int main(int argc, char** argv) {
@@ -299,7 +299,9 @@ void initKeypad() {
 
   do {
     key = wgetch(board_win);
-    if(GAME_END) break;
+    if(GAME_END) {
+      if(!GAME_END_PRESS--) break;
+    }
     switch(key) {
       case KEY_LEFT:
       case 'a':
@@ -552,6 +554,7 @@ void showAll() {
 void gameWin() {
   showAll();
   GAME_END = true;
+  GAME_END_PRESS = 1;
 
   // Inform the player
   sprintf(info, "Congrats! You survived the minefield!");
@@ -564,6 +567,7 @@ void gameWin() {
 void gameOver() {
   showAll();
   GAME_END = true;
+  GAME_END_PRESS = 1;
 
   // Inform the player
   sprintf(info, "You triggered a mine! Better luck next time!");
